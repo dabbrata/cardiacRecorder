@@ -26,7 +26,7 @@
         android:layout_width="21dp"
         android:layout_height="35dp"
         android:background="@drawable/border_radius"
-        android:backgroundTint="@color/darkblue"
+        android:backgroundTint="#1b1469"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView"
@@ -38,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_baseline_close_24"
-        android:backgroundTint="@color/darkblue"
+        android:backgroundTint="#1b1469"
         app:layout_constraintBottom_toBottomOf="@+id/textView"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintHorizontal_bias="0.325"
@@ -53,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="About Info"
-        android:textColor="@color/darkblue"
+        android:textColor="#1b1469"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.098"
@@ -68,7 +68,7 @@
         android:layout_height="62dp"
         android:hint="Username"
         android:textColorHint="#CBC3E3"
-        app:boxStrokeColor="@color/darkblue"
+        app:boxStrokeColor="#1b1469"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.133"
@@ -90,7 +90,7 @@
         android:layout_height="62dp"
         android:hint="BPM"
         android:textColorHint="#CBC3E3"
-        app:boxStrokeColor="@color/darkblue"
+        app:boxStrokeColor="#1b1469"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.887"
@@ -101,7 +101,8 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText2"
             android:layout_width="match_parent"
-            android:textColor="@color/darkblue"
+            android:inputType="number"
+            android:textColor="#1b1469"
             android:layout_height="51dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,7 +113,7 @@
         android:layout_height="62dp"
         android:hint="Systolic pressure(mmHg)"
         android:textColorHint="#CBC3E3"
-        app:boxStrokeColor="@color/darkblue"
+        app:boxStrokeColor="#1b1469"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.542"
@@ -123,8 +124,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText3"
             android:layout_width="310dp"
+            android:inputType="number"
             android:layout_height="51dp"
-            android:textColor="@color/darkblue" />
+            android:textColor="#1b1469" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -134,7 +136,7 @@
         android:layout_height="62dp"
         android:hint="Diastolic pressure(mmHg)"
         android:textColorHint="#CBC3E3"
-        app:boxStrokeColor="@color/darkblue"
+        app:boxStrokeColor="#1b1469"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.542"
@@ -145,8 +147,9 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText4"
             android:layout_width="310dp"
+            android:inputType="number"
             android:layout_height="51dp"
-            android:textColor="@color/darkblue" />
+            android:textColor="#1b1469" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -154,7 +157,7 @@
         android:layout_width="309dp"
         android:layout_height="59dp"
         android:layout_marginTop="12dp"
-        android:backgroundTint="@color/darkblue"
+        android:backgroundTint="#1b1469"
         android:text="Check"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -261,8 +264,8 @@
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Normal"
-        android:textColor="#00FF00"
+        android:text="type"
+        android:textColor="#808080"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintStart_toStartOf="@+id/textView5"
@@ -272,8 +275,8 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Extreme"
-        android:textColor="@color/darkblue"
+        android:text="type"
+        android:textColor="#808080"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintStart_toStartOf="@+id/textView6"
@@ -283,8 +286,8 @@
         android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bad"
-        android:textColor="#ff0000"
+        android:text="type"
+        android:textColor="#808080"
         app:layout_constraintBottom_toBottomOf="@+id/textView7"
         app:layout_constraintEnd_toEndOf="@+id/textView7"
         app:layout_constraintStart_toStartOf="@+id/textView7"
@@ -310,7 +313,7 @@
         android:background="@drawable/button_background"
         android:text="Save"
         android:textColor="@color/white"
-        app:backgroundTint="@color/darkblue"
+        app:backgroundTint="#1b1469"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.8"
@@ -322,14 +325,14 @@
         android:id="@+id/button3"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/button_border"
         android:text="History"
         android:textColor="@color/darkblue"
-        android:background="@drawable/button_border"
         app:backgroundTint="@color/white"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintHorizontal_bias="0.912"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14"
         app:layout_constraintVertical_bias="0.25" />
