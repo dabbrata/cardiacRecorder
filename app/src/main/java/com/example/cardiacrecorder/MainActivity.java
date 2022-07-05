@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -25,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
     TextView sysText,diasText,bpmText;
 
     int bpmNum,dysPressure,sysPressure;
+
+    DatabaseHelper databaseHelper;
+    String sysComment,dyasComment,bpmComment;
 
 
     @Override
@@ -50,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         checkButton = (Button)findViewById(R.id.button2);
         saveButton = (Button)findViewById(R.id.button);
         hisButton = (Button)findViewById(R.id.button3);
+
+        databaseHelper = new DatabaseHelper(this);
+        SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
 
 
 
@@ -132,23 +140,26 @@ public class MainActivity extends AppCompatActivity {
 
                 if((sysPressure <= 140 && sysPressure>=90))
                 {
-                    sysText.setText("Normal");
+                    sysComment = "Normal";
+                    sysText.setText(sysComment);
                     sysText.setTextColor(Color.parseColor("#00ff00"));
 
                 }
                 else{
-                    sysText.setText("Risk");
+                    sysComment = "Risk";
+                    sysText.setText(sysComment);
                     sysText.setTextColor(Color.parseColor("#ff0000"));
                 }
 
                 if(dysPressure <= 90 && dysPressure >= 60)
                 {
-                    diasText.setText("Normal");
+                    dyasComment = "Normal";
+                    diasText.setText(dyasComment);
                     diasText.setTextColor(Color.parseColor("#00ff00"));
                 }
                 else{
-
-                    diasText.setText("Risk");
+                    dyasComment = "Risk";
+                    diasText.setText(dyasComment);
                     diasText.setTextColor(Color.parseColor("#ff0000"));
                 }
                 //end of normality of blood pressure
@@ -161,12 +172,65 @@ public class MainActivity extends AppCompatActivity {
 
                 if(bpmNum > 59 && bpmNum <101)
                 {
-                    bpmText.setText("Normal");
+                    bpmComment = "Normal";
+                    bpmText.setText(bpmComment);
                     bpmText.setTextColor(Color.parseColor("#00ff00"));
                 }
                 else{
-                    bpmText.setText("Risk");
+                    bpmComment = "Risk";
+                    bpmText.setText(bpmComment);
                     bpmText.setTextColor(Color.parseColor("#ff0000"));
+                }
+
+
+            }
+        });
+
+        //save button and insert data to database...
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                String userNameStr = userName.getText().toString().trim();
+                String bpmStr = bpm.getText().toString().trim();
+                String sysPressStr = sysPress.getText().toString().trim();
+                String diasPressStr = diasPress.getText().toString().trim();
+
+                if(userNameStr.isEmpty()){
+                    userName.setError("Provide username");
+                    userName.requestFocus();
+                    return;
+                }
+                if(bpmStr.isEmpty()){
+                    bpm.setError("Provide your heart rate");
+                    bpm.requestFocus();
+                    return;
+                }
+
+                if(sysPressStr.isEmpty()){
+                    sysPress.setError("Provide systolic pressure");
+                    sysPress.requestFocus();
+                    return;
+                }
+
+
+                if(diasPressStr.isEmpty()){
+                    diasPress.setError("Provide diastolic pressure");
+                    diasPress.requestFocus();
+                    return;
+                }
+
+                bpmNum = new Integer(bpmStr).intValue();
+                dysPressure = new Integer(diasPressStr).intValue();
+                sysPressure = new Integer(sysPressStr).intValue();
+
+                long rowId = databaseHelper.insertData(userNameStr,bpmNum,dysPressure,sysPressure,bpmComment,sysComment,dyasComment);
+                if(rowId != -1){
+                    Toast.makeText(getApplicationContext(), "Succesfully Inserted", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(getApplicationContext(), "Insertion not successful!", Toast.LENGTH_LONG).show();
                 }
 
 
