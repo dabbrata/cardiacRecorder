@@ -18,6 +18,9 @@ import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class MainActivity extends AppCompatActivity {
 
     ImageButton refreshButton;
@@ -30,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
 
     DatabaseHelper databaseHelper;
     String sysComment,dyasComment,bpmComment;
+
+    Calendar calendar;
+    SimpleDateFormat simpleDateFormat,simpleTimeFormat;
+    String curdate;
+    String curtime;
 
 
     @Override
@@ -225,7 +233,13 @@ public class MainActivity extends AppCompatActivity {
                 dysPressure = new Integer(diasPressStr).intValue();
                 sysPressure = new Integer(sysPressStr).intValue();
 
-                long rowId = databaseHelper.insertData(userNameStr,bpmNum,dysPressure,sysPressure,bpmComment,sysComment,dyasComment);
+                calendar = Calendar.getInstance();
+                simpleDateFormat = new SimpleDateFormat("dd MMM, yyyy");
+                curdate = simpleDateFormat.format(calendar.getTime());
+                simpleTimeFormat = new SimpleDateFormat("hh:mm aa");
+                curtime = simpleTimeFormat.format(calendar.getTime());
+
+                long rowId = databaseHelper.insertData(userNameStr,bpmNum,sysPressure,dysPressure,bpmComment,sysComment,dyasComment,curdate,curtime);
                 if(rowId != -1){
                     Toast.makeText(getApplicationContext(), "Succesfully Inserted", Toast.LENGTH_LONG).show();
                 }
@@ -237,7 +251,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //click history button to check all history of records
+        hisButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i  = new Intent(MainActivity.this,AllHistory.class);
+                startActivity(i);
+            }
+        });
         //refresh the main activity page to clear input data
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override

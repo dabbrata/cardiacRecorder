@@ -23,7 +23,7 @@
 
     <ImageButton
         android:id="@+id/refreshButton"
-        android:layout_width="21dp"
+        android:layout_width="31dp"
         android:layout_height="35dp"
         android:background="@drawable/border_radius"
         android:backgroundTint="#1b1469"

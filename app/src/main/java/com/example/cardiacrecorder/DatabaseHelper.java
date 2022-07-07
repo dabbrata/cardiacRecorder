@@ -2,6 +2,7 @@ package com.example.cardiacrecorder;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -12,7 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private  static final String DATABASE_NAME = "Record.db";
     private  static final String TABLE_NAME = "information";
-    private  static final int VERSION_NUMBER = 2;
+    private  static final int VERSION_NUMBER = 5;
     private  static final String ID = "id";
     private  static final String USERNAME = "username";
     private  static final String BPM = "bpm";
@@ -21,9 +22,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private  static final String BPM_CONDITION = "bpm_condition";
     private  static final String SYS_CONDITION = "sys_condition";
     private  static final String DYAS_CONDITION = "dyas_condition";
+    private  static final String DATE = "record_date";
+    private  static final String TIME = "record_time";
     private static final String DROP_TABLE = "DROP TABLE IF EXISTS "+TABLE_NAME;
 
-    private static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"("+ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+USERNAME+" VARCHAR(550), "+BPM+" INTEGER,"+SYSTOLIC+" INTEGER, "+DYASTOLIC+" INTEGER, "+BPM_CONDITION+" VARCHAR(100), "+SYS_CONDITION+" VARCHAR(200), "+DYAS_CONDITION+" VARCHAR(200) ); ";
+    private static final String CREATE_TABLE = "CREATE TABLE "+TABLE_NAME+"("+ID+" INTEGER PRIMARY KEY AUTOINCREMENT, "+USERNAME+" VARCHAR(550), "+BPM+" INTEGER,"+SYSTOLIC+" INTEGER, "+DYASTOLIC+" INTEGER, "+BPM_CONDITION+" VARCHAR(100), "+SYS_CONDITION+" VARCHAR(200), "+DYAS_CONDITION+" VARCHAR(200),"+DATE+" VARCHAR(100),"+TIME+" VARCHAR(100)); ";
     private Context context;
 
     public DatabaseHelper(@Nullable Context context) {
@@ -58,7 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     //insert data in database table...
 
-    public long insertData(String user,Integer bpm,Integer sys,Integer dyas,String bpmCondition, String sysCondition, String dyasCondition)
+    public long insertData(String user,Integer bpm,Integer sys,Integer dyas,String bpmCondition, String sysCondition, String dyasCondition,String date,String time)
     {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -69,7 +72,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         contentValues.put(BPM_CONDITION,bpmCondition);
         contentValues.put(SYS_CONDITION,sysCondition);
         contentValues.put(DYAS_CONDITION,dyasCondition);
+        contentValues.put(DATE,date);
+        contentValues.put(TIME,time);
         long rowId = sqLiteDatabase.insert(TABLE_NAME,null,contentValues);
         return rowId;
+    }
+
+    public Cursor readAllData(){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor cursor = sqLiteDatabase.rawQuery(query,null);
+        return cursor;
     }
 }
