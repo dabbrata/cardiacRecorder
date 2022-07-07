@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     int bpmNum,dysPressure,sysPressure;
 
     DatabaseHelper databaseHelper;
-    String sysComment,dyasComment,bpmComment;
+    String sysComment="No Comment",dyasComment="No Comment",bpmComment="No Comment";
 
     Calendar calendar;
     SimpleDateFormat simpleDateFormat,simpleTimeFormat;
@@ -229,9 +229,59 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                //emppty check complete...
+
                 bpmNum = new Integer(bpmStr).intValue();
                 dysPressure = new Integer(diasPressStr).intValue();
                 sysPressure = new Integer(sysPressStr).intValue();
+
+                if(bpmNum<0){
+                    bpm.setError("Provide positive value");
+                    bpm.requestFocus();
+                    return;
+                }else if(bpmNum<40){
+                    bpm.setError("Provide relevant value between 40 to 120");
+                    bpm.requestFocus();
+                    return;
+                }
+                else if(bpmNum > 120){
+                    bpm.setError("Provide relevant value between 40 to 120");
+                    bpm.requestFocus();
+                    return;
+                }
+
+                if(sysPressure<0){
+                    sysPress.setError("Provide positive value");
+                    sysPress.requestFocus();
+                    return;
+                }else if(sysPressure<60 || sysPressure >200){
+                    sysPress.setError("Provide relevant value between 60 to 200 where normal is 120");
+                    sysPress.requestFocus();
+                    return;
+                }
+
+
+                if(dysPressure<0){
+                    diasPress.setError("Provide positive value");
+                    diasPress.requestFocus();
+                    return;
+                }
+                else if(dysPressure < 40 || dysPressure > 150){
+                    diasPress.setError("Provide relevant value between 40 to 150 where normal is 80");
+                    diasPress.requestFocus();
+                    return;
+                }
+
+                //check range and category measurement
+
+                //end of normality of blood pressure
+
+                if(bpmNum < 40 || bpmNum > 160){
+                    bpm.setError("Provide relevant value of heart beat between 40 to 160");
+                    bpm.requestFocus();
+                    return;
+                }
+
 
                 calendar = Calendar.getInstance();
                 simpleDateFormat = new SimpleDateFormat("dd MMM, yyyy");
@@ -241,6 +291,18 @@ public class MainActivity extends AppCompatActivity {
 
                 long rowId = databaseHelper.insertData(userNameStr,bpmNum,sysPressure,dysPressure,bpmComment,sysComment,dyasComment,curdate,curtime);
                 if(rowId != -1){
+
+                    userName.setText("");
+                    bpm.setText("");
+                    sysPress.setText("");
+                    diasPress.setText("");
+
+                    bpmText.setText("Type");
+                    bpmText.setTextColor(Color.parseColor("#cbc3c3"));
+                    sysText.setText("Type");
+                    sysText.setTextColor(Color.parseColor("#cbc3c3"));
+                    diasText.setText("Type");
+                    diasText.setTextColor(Color.parseColor("#cbc3c3"));
                     Toast.makeText(getApplicationContext(), "Succesfully Inserted", Toast.LENGTH_LONG).show();
                 }
                 else{
