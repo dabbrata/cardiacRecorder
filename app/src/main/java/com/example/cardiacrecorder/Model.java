@@ -3,9 +3,10 @@ package com.example.cardiacrecorder;
 public class Model {
 
     String username,syscomment,dyascomment,bpmcomment,bpm,systolic,dyastolic,date,time;
+    int id;
 
 
-    public Model(String username, String bpm, String systolic, String dyastolic, String syscomment, String dyascomment, String bpmcomment, String date, String time) {
+    public Model(int id,String username, String bpm, String systolic, String dyastolic, String syscomment, String dyascomment, String bpmcomment, String date, String time) {
         this.username = username;
         this.syscomment = syscomment;
         this.dyascomment = dyascomment;
@@ -15,6 +16,15 @@ public class Model {
         this.dyastolic = dyastolic;
         this.date = date;
         this.time = time;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getUsername() {
@@ -88,4 +98,5 @@ public class Model {
     public void setTime(String time) {
         this.time = time;
     }
+
 }
