@@ -23,7 +23,7 @@
 
     <ImageButton
         android:id="@+id/refreshButton"
-        android:layout_width="21dp"
+        android:layout_width="31dp"
         android:layout_height="35dp"
         android:background="@drawable/border_radius"
         android:backgroundTint="#1b1469"
@@ -297,9 +297,10 @@
         android:id="@+id/textView14"
         android:layout_width="304dp"
         android:layout_height="37dp"
-        android:text="Click Save button to store your data and history to check all data"
+        android:text="Click Save button to store your data and history to check all data.Without checking you can save the data where the type of condion is optional"
         android:textAlignment="center"
         android:textColor="#808080"
+        android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -316,10 +317,10 @@
         app:backgroundTint="#1b1469"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintHorizontal_bias="0.8"
+        app:layout_constraintHorizontal_bias="0.625"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.26" />
 
     <Button
         android:id="@+id/button3"
@@ -332,10 +333,10 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.912"
+        app:layout_constraintHorizontal_bias="0.885"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.26" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
