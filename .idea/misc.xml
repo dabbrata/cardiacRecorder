@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/GIT PROJECT 2/cardiacRecorder/app/src/main/res/layout/activity_profile.xml" value="0.25" />
         <entry key="..\:/GIT PROJECT/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/GIT PROJECT/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
         <entry key="..\:/Users/WIN/AndroidStudioProjects/cardiacRecorder/app/src/main/res/drawable/border_radius.xml" value="0.2425" />
@@ -18,7 +19,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
