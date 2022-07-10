@@ -61,9 +61,9 @@ public class ProfileActivity extends AppCompatActivity {
         dateView.setText(dateVal);
         timeView.setText(timeVal);
 
-        hrView.setText(bpmVal);
-        dyasView.setText(dyasVal);
-        sysView.setText(sysVal);
+        hrView.setText(bpmVal+" BPM");
+        dyasView.setText(dyasVal+" mmHg");
+        sysView.setText(sysVal+" mmHg");
 
         Cursor cursor = databaseHelper.showData(id);
         StringBuilder stringBuilder1 = new StringBuilder();
