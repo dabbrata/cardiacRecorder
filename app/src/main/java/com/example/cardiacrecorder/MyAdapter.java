@@ -86,9 +86,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder> {
                bundle.putString("date",dataHolder.get(position).getDate());
                bundle.putString("time",dataHolder.get(position).getTime());
 
-               bundle.putString("bpm_com",dataHolder.get(position).getBpmcomment());
-               bundle.putString("sys_com",dataHolder.get(position).getSyscomment());
-               bundle.putString("dyas_com",dataHolder.get(position).getDyascomment());
+//               bundle.putString("bpm_com",dataHolder.get(position).getBpmcomment());
+//               bundle.putString("sys_com",dataHolder.get(position).getSyscomment());
+//               bundle.putString("dyas_com",dataHolder.get(position).getDyascomment());
 
                i.putExtras(bundle);
                view.getContext().startActivity(i);

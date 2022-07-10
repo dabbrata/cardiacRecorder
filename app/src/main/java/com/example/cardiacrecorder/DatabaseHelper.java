@@ -98,9 +98,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
     public Cursor showData(int id){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = " + id;
         Cursor cursor = db.rawQuery(query,null);
         return cursor;
+    }
+    public boolean updateData(String id,String username,String bpm,String sys,String dyas,String bpm_com,String sys_com, String dyas_com){
+        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(USERNAME,username);
+        contentValues.put(BPM,bpm);
+        contentValues.put(SYSTOLIC,sys);
+        contentValues.put(DYASTOLIC,dyas);
+        contentValues.put(BPM_CONDITION,bpm_com);
+        contentValues.put(SYS_CONDITION,sys_com);
+        contentValues.put(DYAS_CONDITION,dyas_com);
+
+
+        sqLiteDatabase.update(TABLE_NAME,contentValues,"id = ?",new String[]{id});
+        return true;
     }
 }

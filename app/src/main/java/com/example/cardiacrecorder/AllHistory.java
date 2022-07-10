@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -17,6 +19,8 @@ public class AllHistory extends AppCompatActivity {
 
     RecyclerView recyclerView;
     ArrayList<Model> dataHolder = new ArrayList<>();
+
+    ImageView backButton;
 
 
     @Override
@@ -26,6 +30,17 @@ public class AllHistory extends AppCompatActivity {
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
+
+        backButton = (ImageView)findViewById(R.id.imageBackButton);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(AllHistory.this,MainActivity.class);
+                startActivity(i);
+                finish();
+            }
+        });
 
         recyclerView = (RecyclerView)findViewById(R.id.recViewId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -44,7 +59,6 @@ public class AllHistory extends AppCompatActivity {
 
 
     private void dataShow() {
-
         MyAdapter myAdapter = new MyAdapter(dataHolder);
         recyclerView.setAdapter(myAdapter);
     }
