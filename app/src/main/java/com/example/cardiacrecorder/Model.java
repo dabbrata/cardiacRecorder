@@ -8,9 +8,9 @@ public class Model {
 
     public Model(int id,String username, String bpm, String systolic, String dyastolic, String syscomment, String dyascomment, String bpmcomment, String date, String time) {
         this.username = username;
+        this.bpmcomment = bpmcomment;
         this.syscomment = syscomment;
         this.dyascomment = dyascomment;
-        this.bpmcomment = bpmcomment;
         this.bpm = bpm;
         this.systolic = systolic;
         this.dyastolic = dyastolic;

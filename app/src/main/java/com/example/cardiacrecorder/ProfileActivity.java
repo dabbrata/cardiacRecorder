@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,8 +15,9 @@ import android.widget.TextView;
 public class ProfileActivity extends AppCompatActivity {
 
     TextView idView,userView,dateView,timeView,hrView,dyasView,sysView,hrCommentView,dyasComment,sysComment;
-    DatabaseHelper databaseHelper;
+    DatabaseHelper databaseHelper = new DatabaseHelper(this);
     ImageView backButton;
+    Button updateButton;
 
 
     @Override
@@ -28,6 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         backButton = (ImageView)findViewById(R.id.imageView2);
+        updateButton = (Button)findViewById(R.id.button4);
 
         idView = (TextView)findViewById(R.id.textView2);
         userView = (TextView)findViewById(R.id.textView3);
@@ -40,11 +43,13 @@ public class ProfileActivity extends AppCompatActivity {
         dyasComment = (TextView)findViewById(R.id.textView24);
         sysComment = (TextView)findViewById(R.id.textView25);
 
+
+
         Bundle bundle = getIntent().getExtras();
         int id = bundle.getInt("id");
-        String bpmCommentVal = bundle.getString("bpm_com");
-        String dyasCommentVal = bundle.getString("dyas_com");
-        String sysCommentVal = bundle.getString("sys_com");
+//        String bpmCommentVal = bundle.getString("bpm_com");
+//        String dyasCommentVal = bundle.getString("dyas_com");
+//        String sysCommentVal = bundle.getString("sys_com");
         String bpmVal = bundle.getString("bpm");
         String dyasVal = bundle.getString("dyas");
         String sysVal = bundle.getString("sys");
@@ -60,9 +65,20 @@ public class ProfileActivity extends AppCompatActivity {
         dyasView.setText(dyasVal);
         sysView.setText(sysVal);
 
-        hrCommentView.setText(bpmCommentVal);
-        dyasComment.setText(dyasCommentVal);
-        sysComment.setText(sysCommentVal);
+        Cursor cursor = databaseHelper.showData(id);
+        StringBuilder stringBuilder1 = new StringBuilder();
+        StringBuilder stringBuilder2 = new StringBuilder();
+        StringBuilder stringBuilder3 = new StringBuilder();
+
+        while (cursor.moveToNext()){
+            stringBuilder1.append(cursor.getString(5));
+            stringBuilder2.append(cursor.getString(6));
+            stringBuilder3.append(cursor.getString(7));
+        }
+
+        hrCommentView.setText(stringBuilder1);
+        sysComment.setText(stringBuilder2);
+        dyasComment.setText(stringBuilder3);
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +88,8 @@ public class ProfileActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        
 
 
     }

@@ -59,7 +59,6 @@ public class AllHistory extends AppCompatActivity {
 
 
     private void dataShow() {
-
         MyAdapter myAdapter = new MyAdapter(dataHolder);
         recyclerView.setAdapter(myAdapter);
     }

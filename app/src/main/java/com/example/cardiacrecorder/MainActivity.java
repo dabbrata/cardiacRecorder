@@ -284,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 calendar = Calendar.getInstance();
-                simpleDateFormat = new SimpleDateFormat("dd MMM, yyyy");
+                simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
                 curdate = simpleDateFormat.format(calendar.getTime());
                 simpleTimeFormat = new SimpleDateFormat("hh:mm aa");
                 curtime = simpleTimeFormat.format(calendar.getTime());

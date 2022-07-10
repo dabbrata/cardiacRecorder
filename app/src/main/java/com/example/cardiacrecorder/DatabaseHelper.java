@@ -98,7 +98,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
     public Cursor showData(int id){
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = " + id;
         Cursor cursor = db.rawQuery(query,null);
         return cursor;
