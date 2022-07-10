@@ -17,7 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView idView,userView,dateView,timeView,hrView,dyasView,sysView,hrCommentView,dyasComment,sysComment;
     DatabaseHelper databaseHelper = new DatabaseHelper(this);
     ImageView backButton;
-    Button updateButton;
+    Button updateBtn;
 
 
     @Override
@@ -30,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity {
 
 
         backButton = (ImageView)findViewById(R.id.imageView2);
-        updateButton = (Button)findViewById(R.id.button4);
+        updateBtn = (Button)findViewById(R.id.button4);
 
         idView = (TextView)findViewById(R.id.textView2);
         userView = (TextView)findViewById(R.id.textView3);
@@ -89,7 +89,26 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        
+        Bundle bundle1 = new Bundle();
+        bundle1.putInt("id",id);
+        bundle1.putString("username",userVal);
+        bundle1.putString("bpm",bpmVal);
+        bundle1.putString("sys",sysVal);
+        bundle1.putString("dyas",dyasVal);
+        bundle1.putString("sys_comment",stringBuilder2.toString());
+        bundle1.putString("dyas_comment",stringBuilder3.toString());
+        bundle1.putString("bpm_comment",stringBuilder1.toString());
+
+        updateBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(ProfileActivity.this,UpdatePage.class);
+                i.putExtras(bundle1);
+                startActivity(i);
+                finish();
+            }
+        });
+
 
 
     }
