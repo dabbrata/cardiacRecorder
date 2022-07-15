@@ -54,6 +54,7 @@ public class UpdatePage extends AppCompatActivity {
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View v) {
                 Intent i =new Intent(UpdatePage.this,AllHistory.class);
                 startActivity(i);
