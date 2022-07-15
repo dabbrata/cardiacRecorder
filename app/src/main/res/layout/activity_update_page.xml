@@ -7,7 +7,6 @@
     android:background="@drawable/update_background"
     tools:context=".UpdatePage">
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/outlinedTextField"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -188,8 +187,10 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="46dp"
-        android:layout_height="45dp"
+        android:layout_width="43dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="80dp"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/outlinedTextField"
         app:layout_constraintEnd_toEndOf="parent"
