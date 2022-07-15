@@ -33,4 +33,14 @@ public class MainActivityTest {
 
         onView(withId(R.id.recId)).check(matches(isDisplayed()));
     }
+    @Test
+    public void testExit()
+    {
+        onView(withId(R.id.crossButton)).perform(click());
+    }
+    @Test
+    public void testExitBack()
+    {
+        Espresso.pressBack();
+    }
 }
