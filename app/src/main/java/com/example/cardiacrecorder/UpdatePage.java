@@ -28,7 +28,7 @@ public class UpdatePage extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        backButton = (ImageView)findViewById(R.id.imageView2);
+        backButton = (ImageView)findViewById(R.id.imageView5);
         updateButton = (Button)findViewById(R.id.buttonUpdate);
 
 //       idView = (TextView)findViewById(R.id.textView2);
@@ -51,6 +51,15 @@ public class UpdatePage extends AppCompatActivity {
         hrCommentView.setText(bundle.getString("bpm_comment"));
         dyasComment.setText(bundle.getString("dyas_comment"));
         sysComment.setText(bundle.getString("sys_comment"));
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UpdatePage.this,AllHistory.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
