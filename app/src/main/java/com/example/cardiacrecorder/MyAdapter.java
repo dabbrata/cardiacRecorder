@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+/**
+ * This class is created to show data in recyler view items through adapter.
+ */
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder> {
 
     ArrayList<Model> dataHolder;
@@ -24,12 +27,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder> {
     }
     //Context context;
 
+    /**
+     * @param parent
+     * @param viewType
+     * @return
+     */
+
     @NonNull
     @Override
     public myViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.single_row,parent,false);
         return new myViewHolder(view);
     }
+
+    /**
+     *
+     * @param holder
+     * @param position
+     */
 
     @Override
     public void onBindViewHolder(@NonNull myViewHolder holder, int position) {
@@ -44,6 +59,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder> {
 //        holder.dyasComment.setText(dataHolder.get(position).getDyascomment());
 
        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+           /**
+            *
+            * @param view
+            * @return
+            */
            @Override
            public boolean onLongClick(View view) {
                AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
@@ -73,6 +93,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder> {
            }
        });
 
+        /**
+         * after clicking recyler view items the value will be passed to the profile activity.
+         */
        holder.itemView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
@@ -96,6 +119,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder> {
        });
     }
 
+    /**
+     * return the number of total items in recycler view.
+     * @return
+     */
     @Override
     public int getItemCount() {
         return dataHolder.size();
@@ -104,6 +131,11 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.myViewHolder> {
     class myViewHolder extends RecyclerView.ViewHolder{
 
         TextView username,bpm,systolic,dyastolic,date,time,bpmComment,sysComment,dyasComment;
+
+        /**
+         *
+         * @param itemView
+         */
         public myViewHolder(@NonNull View itemView) {
             super(itemView);
             username = (TextView) itemView.findViewById(R.id.textView20);

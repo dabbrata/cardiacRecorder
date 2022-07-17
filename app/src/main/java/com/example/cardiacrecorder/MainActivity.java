@@ -21,8 +21,15 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+/**
+ * In this activity,users provide their records to check and store.
+ */
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * Intialize all the variable for finding the buuton,text etc.
+     * Also creates some object of the specific class
+     */
     ImageButton refreshButton;
     ImageButton crossButton;
     EditText userName,bpm,sysPress,diasPress;
@@ -45,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /**
+         * Hide the actionbar
+         */
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
@@ -68,7 +78,11 @@ public class MainActivity extends AppCompatActivity {
         SQLiteDatabase sqLiteDatabase = databaseHelper.getWritableDatabase();
 
 
-
+        /**
+         * the check button will be checked with respect to cardiac records given by users
+         * After clicking check button the values are shown in three text view field
+         * Here the values which are shown in text view is the cardiac condition of a person
+         */
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -194,7 +208,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //save button and insert data to database...
+        /**
+         * after clicking dave button , the data is saved into the sqlite database
+         * after inserting the data into sqlite database it checks some validation
+         * If irrelevant values are given by user , then it shows some error message
+         */
 
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -282,13 +300,17 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
-
                 calendar = Calendar.getInstance();
                 simpleDateFormat = new SimpleDateFormat("dd MMM yyyy");
                 curdate = simpleDateFormat.format(calendar.getTime());
                 simpleTimeFormat = new SimpleDateFormat("hh:mm aa");
                 curtime = simpleTimeFormat.format(calendar.getTime());
 
+
+                /**
+                 * here the insertData function is called and pass all the values which will be stored into the sqlite database
+                 * before passing the data the time and date will be generated and this will store the insertion time in the database
+                 */
                 long rowId = databaseHelper.insertData(userNameStr,bpmNum,sysPressure,dysPressure,bpmComment,sysComment,dyasComment,curdate,curtime);
                 if(rowId != -1){
 
@@ -313,7 +335,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //click history button to check all history of records
+        /**
+         * click the history button will change the activity from main to all histiry activity
+         * in all history activity all the records are shown from database
+         */
         hisButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -321,7 +346,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        //refresh the main activity page to clear input data
+        /**
+         * refresh button refreshes the main activity page to clear input data
+         */
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -329,7 +356,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        //crossButton to exit this app
+        /**
+         * crossButton is used to exit this app
+         */
         crossButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -357,6 +386,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    /**
+     * After clicking on backpress button in mainactivity page,it shows a alert dialog box .
+     * aftr clicking the yes of alert dialog box, the app will be closed
+     */
     @Override
     public void onBackPressed(){
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);

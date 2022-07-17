@@ -8,6 +8,10 @@ import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 
+/**
+ * This is the starting activity of the application
+ * Which delay a few seconds and go to the main activity.
+ */
 public class splash_screen extends AppCompatActivity {
 
     @Override
@@ -33,6 +37,9 @@ public class splash_screen extends AppCompatActivity {
 
     }
 
+    /**
+     * this function uses for hiding navigation bar
+     */
     private void hideNavigationBar()
     {
         this.getWindow().getDecorView()
