@@ -2,3 +2,7 @@ This the application for store cardiac records of every users so that they can r
 
 https://user-images.githubusercontent.com/83578877/178152156-96acda88-104d-4c5c-ad37-74acc797e486.mp4
 
+The link of the website(java doc) is:
+
+https://dabbrata.github.io/cardiac-recorder/
+
