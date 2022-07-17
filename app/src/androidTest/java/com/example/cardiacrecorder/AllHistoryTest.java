@@ -11,6 +11,10 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import org.junit.Rule;
 import org.junit.Test;
 
+/**
+ * ui testing of all history activity cosidering testing issues of recycler view and related other activities.
+ */
 public class AllHistoryTest {
 
+    
 }

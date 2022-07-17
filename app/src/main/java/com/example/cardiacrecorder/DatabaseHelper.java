@@ -9,6 +9,9 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+/**
+ * This class is created for manipulation of data with SQLite database.
+ */
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private  static final String DATABASE_NAME = "Record.db";
@@ -59,7 +62,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    //insert data in database table...
+    /**
+     * here the value is passed inside the insertData method and after holding that data it is inserted to the sqlite database.
+     * after inserting the data it will return long integer.
+     * if it returns -1 that denotes the unsuccessful insertion.
+     * @param user
+     * @param bpm
+     * @param sys
+     * @param dyas
+     * @param bpmCondition
+     * @param sysCondition
+     * @param dyasCondition
+     * @param date
+     * @param time
+     * @return
+     */
 
     public long insertData(String user,Integer bpm,Integer sys,Integer dyas,String bpmCondition, String sysCondition, String dyasCondition,String date,String time)
     {
@@ -78,12 +95,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return rowId;
     }
 
+    /**
+     * read or retrive all the data
+     * @return cursor to point a row
+     */
     public Cursor readAllData(){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
         Cursor cursor = sqLiteDatabase.rawQuery(query,null);
         return cursor;
     }
+
+    /**
+     * to delete any record the function is called
+     * it returns boolean value
+     * @param id
+     * @return
+     */
     public boolean deleteOne(int id)
     {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -97,12 +125,34 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+    /**
+     * show all the data in recyler view
+     * @param id
+     * @return
+     */
     public Cursor showData(int id){
         SQLiteDatabase db = this.getReadableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME + " WHERE " + ID + " = " + id;
         Cursor cursor = db.rawQuery(query,null);
         return cursor;
     }
+
+    /**
+     * Update any value of the record
+     * After updating the return boolean value
+     * If return true it denotes successfully updated
+     * Otherwise update not successful
+     * @param id
+     * @param username
+     * @param bpm
+     * @param sys
+     * @param dyas
+     * @param bpm_com
+     * @param sys_com
+     * @param dyas_com
+     * @return
+     */
     public boolean updateData(String id,String username,String bpm,String sys,String dyas,String bpm_com,String sys_com, String dyas_com){
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();

@@ -12,6 +12,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * This activity shows the details information of the records.
+ */
 public class ProfileActivity extends AppCompatActivity {
 
     TextView idView,userView,dateView,timeView,hrView,dyasView,sysView,hrCommentView,dyasComment,sysComment;
@@ -65,6 +68,9 @@ public class ProfileActivity extends AppCompatActivity {
         dyasView.setText(dyasVal+" mmHg");
         sysView.setText(sysVal+" mmHg");
 
+        /**
+         * show data method is called through databasehelper class
+         */
         Cursor cursor = databaseHelper.showData(id);
         StringBuilder stringBuilder1 = new StringBuilder();
         StringBuilder stringBuilder2 = new StringBuilder();
@@ -81,6 +87,10 @@ public class ProfileActivity extends AppCompatActivity {
         dyasComment.setText(stringBuilder3);
 
         backButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 Intent i = new Intent(ProfileActivity.this,AllHistory.class);
@@ -99,6 +109,9 @@ public class ProfileActivity extends AppCompatActivity {
         bundle1.putString("dyas_comment",stringBuilder3.toString());
         bundle1.putString("bpm_comment",stringBuilder1.toString());
 
+        /**
+         * After clicking update button the update page will be opened.
+         */
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

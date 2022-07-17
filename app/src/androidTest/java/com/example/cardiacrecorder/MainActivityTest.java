@@ -13,6 +13,9 @@ import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import org.junit.Rule;
 import org.junit.Test;
 
+/**
+ * ui testing of main activity to take input from users.
+ */
 public class MainActivityTest {
     /**
      * After main activity it will go to history activity

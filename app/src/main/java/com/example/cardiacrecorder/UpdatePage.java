@@ -12,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * This activity update the specific record and redirect the user to all history activity.
+ */
 public class UpdatePage extends AppCompatActivity {
 
     TextView idView,userView,dateView,timeView,hrView,dyasView,sysView,hrCommentView,dyasComment,sysComment;
@@ -52,6 +55,9 @@ public class UpdatePage extends AppCompatActivity {
         dyasComment.setText(bundle.getString("dyas_comment"));
         sysComment.setText(bundle.getString("sys_comment"));
 
+        /**
+         * after clicking the backbutton it will moved to the all history activity
+         */
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
 
@@ -62,7 +68,15 @@ public class UpdatePage extends AppCompatActivity {
             }
         });
 
+        /**
+         * after clicking update button the data will be updated and moved to the all history activity.
+         */
         updateButton.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
 
@@ -72,8 +86,10 @@ public class UpdatePage extends AppCompatActivity {
                 String diasPressStr = dyasView.getText().toString().trim();
 
 
-
-                //field emptiness check.......
+                /**
+                 * If the input field is empty and update button is clicked at that time
+                 * Then the page will be returned.
+                 */
                 if(userNameStr.isEmpty()){
                     userView.setError("Provide username");
                     userView.requestFocus();
@@ -166,6 +182,9 @@ public class UpdatePage extends AppCompatActivity {
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append(id);
                 String id = stringBuilder.toString();
+                /**
+                 * Here update data method is called with passign update values which returns boolean value.
+                 */
                 Boolean updated = databaseHelper.updateData(id,userNameStr,bpmStr,sysPressStr,diasPressStr,bpm_com,sys_com,dyas_com);
 
                 if(updated){

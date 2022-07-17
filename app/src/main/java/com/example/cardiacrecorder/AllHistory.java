@@ -15,6 +15,10 @@ import android.widget.ImageView;
 
 import java.util.ArrayList;
 
+/**
+ * In this activity recycler view is added and all items are shown sequentially.
+ */
+
 public class AllHistory extends AppCompatActivity {
 
     RecyclerView recyclerView;
@@ -42,6 +46,11 @@ public class AllHistory extends AppCompatActivity {
             }
         });
 
+        /**
+         * find recyler view id
+         * by cursor it will point a row of the data from sqlite database
+         * Then using while loop all rows will be fetched
+         */
         recyclerView = (RecyclerView)findViewById(R.id.recViewId);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -52,12 +61,16 @@ public class AllHistory extends AppCompatActivity {
             dataHolder.add(obj);
         }
 
+        /**
+         * the data show method is called for showing the data into the recycler view item
+         */
         dataShow();
-        //recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
 
-
+    /**
+     * the dataShow method is created for showing data in recycler view.
+     */
     private void dataShow() {
         MyAdapter myAdapter = new MyAdapter(dataHolder);
         recyclerView.setAdapter(myAdapter);
