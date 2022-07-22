@@ -32,5 +32,5 @@ public class AllHistoryTest {
         onView(withId(R.id.button3)).perform(click());
     }
 
-    
+
 }
