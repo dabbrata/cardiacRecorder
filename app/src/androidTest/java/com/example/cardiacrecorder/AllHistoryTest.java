@@ -16,5 +16,5 @@ import org.junit.Test;
  */
 public class AllHistoryTest {
 
-    
+
 }
