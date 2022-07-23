@@ -73,7 +73,7 @@ public class DatabaseHelperTest {
         myDatabaseHelper.close();
     }
 
-   * this method is to test to test the if the record is updated properly
+    /** this method is to test to test the if the record is updated properly
      * if update successfull then the test case passed
      * the undefinable problem to parse integer in update testing
      */
