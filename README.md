@@ -4,5 +4,5 @@ https://user-images.githubusercontent.com/83578877/178152156-96acda88-104d-4c5c-
 
 The link of the website(java doc) is:
 
-https://dabbrata.github.io/cardiac-recorder/
+https://dabbrata.github.io/cardiac-recorder-javadoc/
 
