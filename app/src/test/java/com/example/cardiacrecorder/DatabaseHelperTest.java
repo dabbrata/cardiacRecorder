@@ -1,5 +1,8 @@
 package com.example.cardiacrecorder;
 
+
+import static org.junit.Assert.assertFalse;
+
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -43,7 +46,34 @@ public class DatabaseHelperTest {
     }
 
     /**
-     * this method is to test to test the if the record is updated properly
+     * this method is to test to test the if the record is deleted properly from database
+     */
+    @Test
+    public void DeleteData()
+    {
+        DatabaseHelper myDatabaseHelper = new DatabaseHelper(RuntimeEnvironment.application);
+
+        String user = "Kowshik";
+        int bpm = 80;
+        int sys = 160;
+        int dias = 60;
+        String bpmCondition = "normal";
+        String sysCondition = "Risk";
+        String dyasCondition = "normal";
+        Calendar calendar = Calendar.getInstance();
+
+        String date = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
+        String time = dateFormat.format(calendar.getTime());
+
+        long i = myDatabaseHelper.insertData(user,bpm,sys,dias,bpmCondition,sysCondition,dyasCondition,date,time);
+
+        myDatabaseHelper.deleteOne((int)i);
+        assertFalse(myDatabaseHelper.checkDataExistsOrNot(i));
+        myDatabaseHelper.close();
+    }
+
+   * this method is to test to test the if the record is updated properly
      * if update successfull then the test case passed
      * the undefinable problem to parse integer in update testing
      */
@@ -59,12 +89,13 @@ public class DatabaseHelperTest {
         String bpmCondition = "normal";
         String sysCondition = "Risk";
         String dyasCondition = "normal";
-
+        
         Calendar calendar = Calendar.getInstance();
 
         String date = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
         SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
         String time = dateFormat.format(calendar.getTime());
+
 
         long i = myDatabaseHelper.insertData(user,Integer.parseInt(bpm),Integer.parseInt(sys),Integer.parseInt(dias),bpmCondition,sysCondition,dyasCondition,date,time);
 
@@ -74,3 +105,4 @@ public class DatabaseHelperTest {
         myDatabaseHelper.close();
     }
 }
+

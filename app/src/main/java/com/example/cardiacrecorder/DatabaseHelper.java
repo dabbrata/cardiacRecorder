@@ -168,6 +168,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         sqLiteDatabase.update(TABLE_NAME,contentValues,"id = ?",new String[]{id});
         return true;
     }
+
     public boolean checkDataExistsOrNot(Long id) {
         SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
         String Query = "Select * from " + TABLE_NAME + " where " + ID + " = " + Long.toString(id);
@@ -179,4 +180,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return true;
     }
+
 }
