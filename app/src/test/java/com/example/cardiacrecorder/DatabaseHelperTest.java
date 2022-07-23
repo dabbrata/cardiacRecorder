@@ -41,4 +41,36 @@ public class DatabaseHelperTest {
 
 
     }
+
+    /**
+     * this method is to test to test the if the record is updated properly
+     * if update successfull then the test case passed
+     * the undefinable problem to parse integer in update testing
+     */
+    @Test
+    public void testUpdateData() {
+        DatabaseHelper myDatabaseHelper = new DatabaseHelper(RuntimeEnvironment.application);
+
+        String id = "2";
+        String user = "Kowshik";
+        String bpm = "80";
+        String sys = "160";
+        String dias = "60";
+        String bpmCondition = "normal";
+        String sysCondition = "Risk";
+        String dyasCondition = "normal";
+
+        Calendar calendar = Calendar.getInstance();
+
+        String date = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("hh:mm a");
+        String time = dateFormat.format(calendar.getTime());
+
+        long i = myDatabaseHelper.insertData(user,Integer.parseInt(bpm),Integer.parseInt(sys),Integer.parseInt(dias),bpmCondition,sysCondition,dyasCondition,date,time);
+
+
+        myDatabaseHelper.updateData(Long.toString(myDatabaseHelper.insertData(user,Integer.parseInt(bpm),Integer.parseInt(sys),Integer.parseInt(dias),bpmCondition,sysCondition,dyasCondition,date,time)),"Dabbrata","100","165","65","risk","risk","normal",date,time);
+
+        myDatabaseHelper.close();
+    }
 }
